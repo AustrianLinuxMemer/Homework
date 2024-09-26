@@ -3,7 +3,7 @@ package net.austrianlinuxmemer.calculator;
 public class NumberTester {
     NumberTest oddTester;
     NumberTest primeTester;
-    NumberTest palindromeTester
+    NumberTest palindromeTester;
     public NumberTester(String fileName) {
 
     }
@@ -16,4 +16,5 @@ public class NumberTester {
     public void setPalindromeTester(NumberTest palindromeTester) {
         this.palindromeTester = palindromeTester;
     }
+    public void testFile() {}
 }
