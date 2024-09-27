@@ -28,7 +28,20 @@ public class NumberTester {
     public void setPalindromeTester(NumberTest palindromeTester) {
         this.palindromeTester = palindromeTester;
     }
-    public void testFile() {}
+    public void testFile() {
+        cases.forEach(x -> {
+            switch (x.mode) {
+                case 1:
+                    System.out.println(oddTester.testNumber(x.number) ? "ODD" : "EVEN");
+                case 2:
+                    System.out.println(primeTester.testNumber(x.number) ? "PRIME" : "NOT PRIME");
+                case 3:
+                    System.out.println(palindromeTester.testNumber(x.number) ? "PALINDROME" : "NOT PALINDROME");
+                default:
+                    System.out.printf("Test case %d unknown\n", x.mode);
+            }
+        });
+    }
     public static class Case {
         public Case(String caseString) throws NumberFormatException, IndexOutOfBoundsException {
             String[] numbers = caseString.split(" ");
