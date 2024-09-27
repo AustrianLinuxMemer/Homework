@@ -14,7 +14,8 @@ public class NumberTester {
     List<Case> cases;
     public NumberTester(String fileName) {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            this.cases = reader.lines().skip(1).map(Case::new).toList();
+            int numberOfCases = Integer.parseInt(reader.readLine());
+            this.cases = reader.lines().map(Case::new).toList();
         } catch (IOException | NumberFormatException | IndexOutOfBoundsException e) {
             throw new RuntimeException(e);
         }
@@ -48,7 +49,7 @@ public class NumberTester {
             this.mode = Integer.parseInt(numbers[0]);
             this.number = Integer.parseInt(numbers[1]);
         }
-        int mode;
-        int number;
+        final int mode;
+        final int number;
     }
 }
