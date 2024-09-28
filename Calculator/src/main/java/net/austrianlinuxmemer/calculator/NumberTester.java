@@ -12,11 +12,15 @@ public class NumberTester {
     NumberTest primeTester;
     NumberTest palindromeTester;
     List<Case> cases;
-    public NumberTester(String fileName) {
+    public NumberTester(String fileName) throws IllegalArgumentException {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             int numberOfCases = Integer.parseInt(reader.readLine());
             this.cases = reader.lines().map(Case::new).toList();
+            if (cases.size() != numberOfCases) {
+                throw new IllegalArgumentException();
+            }
         } catch (IOException | NumberFormatException | IndexOutOfBoundsException e) {
+            System.err.println("Invalid File format");
             throw new RuntimeException(e);
         }
     }
@@ -34,12 +38,16 @@ public class NumberTester {
             switch (x.mode) {
                 case 1:
                     System.out.println(oddTester.testNumber(x.number) ? "ODD" : "EVEN");
+                    break;
                 case 2:
                     System.out.println(primeTester.testNumber(x.number) ? "PRIME" : "NOT PRIME");
+                    break;
                 case 3:
                     System.out.println(palindromeTester.testNumber(x.number) ? "PALINDROME" : "NOT PALINDROME");
+                    break;
                 default:
                     System.out.printf("Test case %d unknown\n", x.mode);
+                    break;
             }
         });
     }
